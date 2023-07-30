@@ -24,8 +24,8 @@ gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=Fa
 
 
 
-connectionString = "postgres://default:pc2MHtUjgTe9@ep-ancient-frog-32398872-pooler.eu-central-1.postgres.vercel-storage.com:5432/verceldb?sslmode=require"
-
+connectionString = os.environ.get("URL")
+print(connectionString)
 ##CONNECT TO DB
 app.config['SQLALCHEMY_DATABASE_URI'] = connectionString
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -229,5 +229,5 @@ def delete_post(post_id):
     return redirect(url_for('get_all_posts'))
 
 
-# if __name__ == "__main__":
-#     app.run()
+if __name__ == "__main__":
+    app.run(debug=True)
