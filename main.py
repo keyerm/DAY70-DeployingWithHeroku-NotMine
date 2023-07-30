@@ -22,11 +22,7 @@ ckeditor = CKEditor(app)
 Bootstrap(app)
 gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
 
-# app.config['DATABASE_USER'] = "default"
-# app.config['DATABASE_PASSWORD'] = "pc2MHtUjgTe9"
-# app.config['DATABASE_HOST'] = "ep-ancient-frog-32398872-pooler.eu-central-1.postgres.vercel-storage.com"
-# app.config['DATABASE_PORT'] = "5432"
-# app.config['DATABASE_NAME'] = "verceldb"
+
 
 connectionString = "postgres://default:pc2MHtUjgTe9@ep-ancient-frog-32398872-pooler.eu-central-1.postgres.vercel-storage.com:5432/verceldb?sslmode=require"
 
