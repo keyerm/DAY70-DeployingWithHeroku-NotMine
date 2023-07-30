@@ -11,18 +11,27 @@ from sqlalchemy.orm import relationship
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from forms import LoginForm, RegisterForm, CreatePostForm, CommentForm
 from flask_gravatar import Gravatar
+import psycopg2
 
 # SECRET_KEY = os.environ.get("SEC_KEY")
 # print(SECRET_KEY)
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+# app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 Bootstrap(app)
 gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
 
+app.config['DATABASE_USER'] = "default"
+app.config['DATABASE_PASSWORD'] = "pc2MHtUjgTe9"
+app.config['DATABASE_HOST'] = "ep-ancient-frog-32398872-pooler.eu-central-1.postgres.vercel-storage.com"
+app.config['DATABASE_PORT'] = "5432"
+app.config['DATABASE_NAME'] = "verceldb"
+
+connectionString = "postgres://default:pc2MHtUjgTe9@ep-ancient-frog-32398872-pooler.eu-central-1.postgres.vercel-storage.com:5432/verceldb?sslmode=require"
+
 ##CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = connectionString
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 login_manager = LoginManager()
